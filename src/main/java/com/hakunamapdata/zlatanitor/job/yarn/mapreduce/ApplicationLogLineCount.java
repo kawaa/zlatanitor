@@ -54,8 +54,8 @@ public class ApplicationLogLineCount extends Configured implements Tool {
     }
 
     private static String[] getLocalTestArgs() {
-        String input = "src/test/resources/applogs/*";
-        String output = "src/test/resources/applogs-out";
+        String input = "src/test/resources/app-logs/*";
+        String output = "src/test/resources/app-logs-out";
         String[] testArgs = {input, output};
         return testArgs;
     }

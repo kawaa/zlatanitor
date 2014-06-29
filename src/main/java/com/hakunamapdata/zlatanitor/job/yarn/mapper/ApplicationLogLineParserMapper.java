@@ -75,8 +75,10 @@ public class ApplicationLogLineParserMapper extends Mapper<Text, NullWritable, T
         }
 
         if (line != null) {
-            int start = line.indexOf("\u0006stderr");
-            int stop = line.indexOf("\u0006stdout");
+            String startCode = "\u0006stderr";
+            String stopCode = "\u0006stdout";
+            int start = line.indexOf(startCode) + startCode.length();
+            int stop = line.indexOf(stopCode);
             if (start > 0 && stop > 0) {
                 String error = line.substring(start, stop);
                 String[] parts = error.split("\n");

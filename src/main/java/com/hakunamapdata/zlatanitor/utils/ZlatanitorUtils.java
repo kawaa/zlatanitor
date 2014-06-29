@@ -19,7 +19,7 @@ public class ZlatanitorUtils {
     public static Configuration setDefaultConfigurationOptions(Configuration conf) {
         long splitSize = 4 * 134217728;
         conf.set("avro.mapred.deflate.level", "6");
-        conf.set("mapreduce.output.fileoutputformat.compress", "true");
+        conf.set("mapreduce.output.fileoutputformat.compress", "false");
 
         conf.setLong("mapreduce.input.fileinputformat.split.minsize", splitSize);
         conf.setLong("mapreduce.input.fileinputformat.split.maxsize", splitSize);
