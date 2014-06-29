@@ -14,6 +14,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.mapreduce.lib.reduce.IntSumReducer;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
@@ -42,6 +44,7 @@ public class ApplicationLogLineCount extends Configured implements Tool {
 
         // set ouput
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        MultipleOutputs.addNamedOutput(job, "text", TextOutputFormat.class, Text.class, IntWritable.class);
 
         job.setReducerClass(IntSumReducer.class);
         job.setNumReduceTasks(1);
@@ -54,7 +57,7 @@ public class ApplicationLogLineCount extends Configured implements Tool {
     }
 
     private static String[] getLocalTestArgs() {
-        String input = "src/test/resources/app-logs/*";
+        String input = "src/test/resources/app-logs/application_1403384163948_0001/*";
         String output = "src/test/resources/app-logs-out";
         String[] testArgs = {input, output};
         return testArgs;
