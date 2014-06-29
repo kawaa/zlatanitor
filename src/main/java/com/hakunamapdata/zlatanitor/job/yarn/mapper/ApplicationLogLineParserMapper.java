@@ -106,8 +106,8 @@ public class ApplicationLogLineParserMapper extends Mapper<Text, NullWritable, T
                 for (String part : parts) {
                     textKey.set(part);
                     context.write(textKey, ONE);
-                    textKey.set(appId + "\t" + part);
-                    context.write(textKey, ONE);
+                    // textKey.set(appId + "\t" + part);
+                    // context.write(textKey, ONE);
                 }
             }
         }
