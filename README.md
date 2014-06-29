@@ -14,6 +14,6 @@ Here is a conceptually simple MapReduce jobs to parse them. It simply counts how
 
 One can use applications logs to discover some performance issues e.g. to count how many times map tasks spill the in-memory map output buffer to disk. If it is done more than once, you can consider giving more memory to it, to minimize disk IO.
 
-	$ mvn3 -P full package
+	$ mvn -P full package
 	$ hadoop jar target/zlatanitor-1.0-SNAPSHOT-jar-with-dependencies.jar com.hakunamapdata.zlatanitor.job.yarn.mapreduce.ApplicationLogLineCount /app-logs/kawaa/logs/*/* logs/kawaa/linecount
-        $ hadoop fs -cat hadoop fs -cat logs/kawaa/linecount/*
+	$ hadoop fs -cat hadoop fs -cat logs/kawaa/linecount/*
